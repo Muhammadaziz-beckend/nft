@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block nav %}
+    <div class="container form_seorch">
+        <form method="get">
+            <h2>Browse Marketplace</h2>
+            <p>Browse through more than 50k NFTs on the NFT Marketplace.</p>
+
+            <label for="">
+                <input type="text" placeholder='Search your favourite NFTs' name='seorch'>
+                <button type="submit">
+                    <img src="{% static "img/seorch.svg" %}" alt="">
+                </button>
+            </label>
+            
+        </form>
+    </div>
+
+    {% comment %} <hr> {% endcomment %}
+{% endblock nav %}
+
+
+
+
+{% block mian2 %}
+
+{% if colection == 1 %}
+{% include "components/nft_marketplase.html" %}
+
+{% else %}
+{% include "components/collection.html" %}
+{% endif %}
+
+{% endblock mian2 %}

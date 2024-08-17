@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+
+{% load static %}
+
+{% block nav %}
+
+<div class="img_header">
+    <img src="{{nft.img.url}}" alt="" class="nft_img">
+</div>
+
+{% endblock nav %}
+
+
+
+{% block main %}
+    <div class="main_diteil_container">
+        <div class="info_nft q">
+            <h2>{{nft.name}}</h2>
+            <p class='des'>{{nft.create_date}}</p>
+        </div>
+
+        {% if request.user.is_authenticated %}
+
+            {% if request.user == nft.created_by.user %}
+
+                {% else %}
+                <div class="bey">
+                    <a href='{% url "bey" id=nft.pk%}' class='plass_balans'>Bey</a>
+                </div>
+            {% endif %}
+        
+        {% endif %}
+        <div class="user_created_by q">
+            <p class='des'>Created By</p>
+            <a href='{% url "deteil_user" id=nft.created_by.id%}' class="user">
+                <img src="{{nft.created_by.photo.url}}" alt="">
+                <span>{{nft.created_by.user}}</span>
+            </a>
+        </div>    
+        
+        <div class="description_nft q">
+            <p class='des'>Description</p>
+            <p class='description'>{{nft.description}}</p>
+        </div>
+
+        {% if  nft.tegs.all %}
+            <div class="tegs">
+                <p class='des'>Tags</p>
+                
+                <div class="gerrup_tegs">
+                    {% for teg in nft.tegs.all %}
+                        <a class='teg' href="">{{teg}}</a>
+                    {% endfor %}
+                </div>
+                
+            </div>
+        {% endif %}
+        
+    </div>
+
+{% endblock main %}
+
+
+{% block mian2 %}
+    {% include "components/collection2.html" %}
+
+    <script src="{% static "js/becraund.js" %}"></script>
+{% endblock mian2 %}

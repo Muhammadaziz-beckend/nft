@@ -1,0 +1,21 @@
+{% extends "workspace/base.html" %}
+{% load static %}
+
+
+
+{% block main %}
+
+<img src="{% static "img/fonworkcpase.png" %}" alt="" class="fon_2">
+
+<div class="plas_balans_item">
+
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <input type="number" name="plas_balans" id="">
+
+        <button class='submint' type="submit">Plas</button>
+    </form>
+</div>
+
+{% endblock main %}

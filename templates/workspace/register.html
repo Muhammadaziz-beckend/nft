@@ -1,0 +1,48 @@
+{% extends "workspace/base.html" %}
+{% load static %}
+
+
+
+{% block main %}
+
+
+<section class="section">
+    <img src="{% static "img/fon.png" %}" class='fon' alt="">
+
+    <form method="post">
+        {% csrf_token %}
+        {% comment %} {{form.as_p}} {% endcomment %}
+        {{form.errors}}
+
+        <h2>Create account</h2>
+        <p>Welcome! enter your details and start creating, collecting and selling NFTs.</p>
+        
+        <label for="">
+            <img class='img_input' src="{% static "img/user2.svg" %}" alt="">
+            <input type="text" placeholder='Usernama' name='username'>
+        </label>
+
+        <label for="">
+            <img class='img_input' src="{% static "img/email.svg" %}" alt="">
+            <input type="email" placeholder='Email Address' name='email'>
+        </label>
+
+        <label for="">
+            <img class='password img_input' src="{% static "img/password.svg" %}" alt="">
+            <input class='password' type="password" name="password1" id="" placeholder='Password'>
+        </label>
+
+        <label for="">
+            <img class='password img_input' src="{% static "img/password.svg" %}" alt="">
+            <input class='password' type="password" name="password2" id="" placeholder='Confirm Password'>
+        </label>
+
+        <button type="submit">Sign Up</button>
+        <a href="{% url "login" %}">Account</a>
+
+    </form>
+
+</section>
+
+
+{% endblock main %}

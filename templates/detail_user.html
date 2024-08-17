@@ -1,0 +1,50 @@
+{% extends "workspace/base.html" %}
+{% load static %}
+
+{% block nav %}
+<div class="navbar">
+    <img src="{% static "img/fonworkcpase.png" %}" alt="" class="fon">
+    <div class="navbar_item">
+        <div class="info_user">
+            <img src="{{user.photo.url}}" alt="" class="user">
+
+            <div class="name">
+                <h2>{{user}}</h2>
+
+                
+
+                {% comment %} <a href='{% url "bey" %}' class='plass_balans'>plass balans</a> {% endcomment %}
+            </div>
+                {% comment %} <h3>{{user.balans}} com</h3> {% endcomment %}
+            <div class="gruup">
+                <div class="blok">
+                    <h4>
+                        {{balans}}k+ 
+                    </h3>
+                    <span>Total Sale</span>
+                </div>
+
+                <div class="blok">
+                    <h4>
+                        {{user.nfts_sold}}+
+                    </h4>
+                    <span>Auctions</span>
+                </div>
+
+                <div class="blok">
+                    <h4>
+                        {{nfts_total}}
+                    </h4>
+                    <span>Nft total</span>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock nav %}
+
+
+{% block main %}
+{% include "components/collection2.html" %}
+
+{% endblock main %}

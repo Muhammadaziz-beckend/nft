@@ -1,0 +1,72 @@
+{% load static %}
+
+<header class="header">
+    <div class="container">
+        <div class="header_items">
+
+            <div class="logo"> 
+
+                <a href="{% url "main" %}">
+                    <img src="{% static "img/logo.svg" %}" alt="">
+                </a>
+
+            </div>
+
+            <div class="burger_menu">
+                <button type="button">
+                    <img src="{% static "img/burger-menu.svg" %}" alt="">
+                </button>
+            </div>
+
+            <div class="menu none">
+                <div class="close">
+                    <img src="{% static "img/close.svg" %}" alt="">
+                </div>
+                
+                <ul>
+                    <li><a href="{% url "market" %}">Marketplace</a></li>
+                    <li><a href="#">Rankings</a></li>
+                    <li><a href="#">Connect a wallet</a></li> 
+                </ul>
+
+                
+                    {% if request.user.is_authenticated%}
+                    
+                    <div class="select_user">
+                        <h2>{{ request.user.username }} <img class='select-bottom' src="{% static "img/top-bottom.svg" %}" alt=""></h2>
+
+                        <ul class='none'>
+                            <li>
+                                <a href="{% url "login" %}">
+                                    Workcpase
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url "logaut" %}">
+                                    logaut
+                                </a>
+                            </li>
+                            <li>
+                                <a href="{% url "logaut" %}">
+                                    Settings
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                       
+                    {% else %}
+                        <div class="btn">
+                            <a href="{% url "login" %}">
+                                <img src="{% static "img/user.svg" %}" alt="">
+                                Sign Up
+                            </a>
+                        </div>
+                    {% endif %}
+                    
+                
+                
+            </div>
+
+        </div>
+    </div>
+</header>

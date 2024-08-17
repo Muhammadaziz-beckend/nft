@@ -1,0 +1,49 @@
+{% load static %}
+
+<footer class="footer">
+    <div class="container">
+        <nav>
+            <ul>
+                <li>
+                    <a href="">
+                        <img src="{% static "img/logo.svg" %}" alt="">
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        NFT marketplace UI created  
+                        with Anima for Figma.
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        Join our community
+                    </a>
+                </li>
+                <li>
+                    <a href="">
+                        <img src="{% static "img/links.svg" %}" alt="">
+                    </a>
+                </li>
+            </ul>
+            <ul>
+                <li>Explore</li>
+                <li><a href="{% url "main" %}">Marketplace</a></li>
+                <li><a href="">Rankings</a></li>
+                <li><a href="">Connect a wallet</a></li>
+            </ul>
+            <ul>
+                <li>Join our weekly digest</li>
+                <li><a href="">Get exclusive promotions & updates
+                    straight to your inbox.</a></li>
+                <li>
+                    <form method="post">
+                        {% csrf_token %}
+                        <input type="text" placeholder="Enter your email here">
+                        <button type="submit">Subscribe</button>
+                    </form>
+                </li>
+            </ul>
+        </nav>
+    </div>
+</footer>

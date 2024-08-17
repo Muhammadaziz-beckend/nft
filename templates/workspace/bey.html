@@ -1,0 +1,23 @@
+{% extends "workspace/base.html" %}
+{% load static %}
+
+
+{% block main %}
+
+<img src="{% static "img/fonworkcpase.png" %}" alt="" class="fon_2">
+
+<div class="bey_item">
+
+    <form action="" method="post">
+        {% csrf_token %}
+
+        <h2>Вы точно хотите купить NFT за {{nft.prise}} com</h2>
+        <input type="hidden" name="nft_bey" value="{{nft.pk}}">
+
+        <img src="{{nft.img.url}}" alt="" class='bey_nft'>
+
+        <button class='submint' type="submit">Купить</button>
+    </form>
+</div>
+
+{% endblock main %}

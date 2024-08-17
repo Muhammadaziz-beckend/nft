@@ -1,0 +1,269 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block nav %}
+
+<div class="navbar">
+    <div class="container">
+        <div class="navbar_items">
+            <div class="item_left">
+                <div class="content">
+                    <h1>
+                        Discover digital <br> art & Collect NFTs
+                        <br>
+                    </h1>
+                    <p>
+                        NFT marketplace UI created with Anima
+                        for Figma. Collect, buy and sell art from 
+                        more than 20k NFT artists.
+                    </p>
+                </div>
+                
+
+                <a href="{% url "login" %}" class='get_start'>
+                    <img src="{% static "img/raceta.svg" %}" alt="">
+                    Get Started
+                </a>
+
+                <div class="gruup">
+                    <div class="blok">
+                        <h4>
+                            240k+ 
+                        </h3>
+                        <span>Total Sale</span>
+                    </div>
+
+                    <div class="blok">
+                        <h4>
+                            100+
+                        </h4>
+                        <span>Auctions</span>
+                    </div>
+
+                    <div class="blok">
+                        <h4>
+                            240+
+                        </h4>
+                        <span>Artists</span>
+                    </div>
+                </div>
+            </div>
+            <div class="item_reght">
+
+                <a href="nft/{{header_nft.created_by.user.pk}}">
+                        <div class="top">
+                            <img src="{{header_nft.img.url}}" alt="">
+                        </div>
+                        <div class="bottom">
+                            <h5 class="name_nft">
+                                {{header_nft.name}}
+                            </h5>
+
+                            <div class="user_creted_nft">
+
+                                <img src="{{header_nft.created_by.photo.url}}" alt="">
+
+                                <span>{{header_nft.created_by.user.username}}</span>
+                            </div>
+                        </div>
+                </a>
+                
+
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock nav %}
+
+
+
+
+
+
+{% block main %}
+
+<section  class='section'>
+    <h4 class='hed_'>Trending Collection</h4> 
+    <p class='bot_'>Checkout our weekly updated trending collection.</p>
+    
+    <div class="blok_content">
+
+        {% for user in users_with_nfts %}
+            <div class="blok">
+                <div class="top">
+                    <img src="{{user.created_by.first.img.url}}" alt="">
+                </div>
+                <div class="bottom">
+                    {% for nft in user.created_by.all|slice:"1:3" %}
+                        <img src="{{ nft.img.url }}" alt="">
+                    {% endfor %}
+                    {% comment %} <img src="{% static "img/679140.png" %}" alt=""> {% endcomment %}
+
+                    <div class="caunt_all_nft">
+                        
+                        <span>{{user.created_by.count}}+</span>
+                    </div>
+                </div>
+                <div class="user">
+                    <h3 class="name_nft">
+                        {{ user.nft.name }}
+                    </h3>
+                    
+                    <div class="blok_user">
+                        <img src="{% static "img/user_1.png" %}" alt="">
+                        {{user}}
+                    </div>
+                </div>
+
+            </div>
+        {% endfor %}
+
+        {% comment %} <div class="blok">
+
+            <div class="top">
+                <img src="{% static "img/679140.png" %}" alt="">
+            </div>
+            <div class="bottom">
+                <img src="{% static "img/679140.png" %}" alt="">
+                <img src="{% static "img/679140.png" %}" alt="">
+
+                <div class="caunt_all_nft">
+                    <span>1025+</span>
+                </div>
+            </div>
+            <div class="user">
+                <h3 class="name_nft">
+                    DSGN Animals
+                </h3>
+                
+                <div class="blok_user">
+                    <img src="{% static "img/user_1.png" %}" alt="">
+                    lolo
+                </div>
+            </div>
+
+        </div>
+
+        <div class="blok">
+
+            <div class="top">
+                <img src="{% static "img/679140.png" %}" alt="">
+            </div>
+            <div class="bottom">
+                <img src="{% static "img/679140.png" %}" alt="">
+                <img src="{% static "img/679140.png" %}" alt="">
+
+                <div class="caunt_all_nft">
+                    <span>1025+</span>
+                </div>
+            </div>
+            <div class="user">
+                <h3 class="name_nft">
+                    DSGN Animals
+                </h3>
+                
+                <div class="blok_user">
+                    <img src="{% static "img/user_1.png" %}" alt="">
+                    lolo
+                </div>
+            </div>
+
+        </div> {% endcomment %}
+    </div>
+
+</section>
+
+
+{% comment %} top creaters {% endcomment %}
+
+<section  class='section'>
+    <h4 class='hed_'>Top creators</h4> 
+    <p class='bot_ bot_2'>Checkout Top Rated Creators on the NFT Marketplace </p>
+    <a href="#">
+        <img src="{% static "img/raceta.svg" %}" alt="">
+        View Rankings</a>
+
+    <div class="blok_content">
+        <div class="blok">
+
+            <div class="top">
+                <img src="{% static "img/679140.png" %}" alt="">
+            </div>
+            <div class="bottom">
+                <img src="{% static "img/679140.png" %}" alt="">
+                <img src="{% static "img/679140.png" %}" alt="">
+
+                <div class="caunt_all_nft">
+                    <span>1025+</span>
+                </div>
+            </div>
+            <div class="user">
+                <h3 class="name_nft">
+                    DSGN Animals
+                </h3>
+                
+                <div class="blok_user">
+                    <img src="{% static "img/user_1.png" %}" alt="">
+                    lolo
+                </div>
+            </div>
+
+        </div>
+
+        <div class="blok">
+
+            <div class="top">
+                <img src="{% static "img/679140.png" %}" alt="">
+            </div>
+            <div class="bottom">
+                <img src="{% static "img/679140.png" %}" alt="">
+                <img src="{% static "img/679140.png" %}" alt="">
+
+                <div class="caunt_all_nft">
+                    <span>1025+</span>
+                </div>
+            </div>
+            <div class="user">
+                <h3 class="name_nft">
+                    DSGN Animals
+                </h3>
+                
+                <div class="blok_user">
+                    <img src="{% static "img/user_1.png" %}" alt="">
+                    lolo
+                </div>
+            </div>
+
+        </div>
+
+        <div class="blok">
+
+            <div class="top">
+                <img src="{% static "img/679140.png" %}" alt="">
+            </div>
+            <div class="bottom">
+                <img src="{% static "img/679140.png" %}" alt="">
+                <img src="{% static "img/679140.png" %}" alt="">
+
+                <div class="caunt_all_nft">
+                    <span>1025+</span>
+                </div>
+            </div>
+            <div class="user">
+                <h3 class="name_nft">
+                    DSGN Animals
+                </h3>
+                
+                <div class="blok_user">
+                    <img src="{% static "img/user_1.png" %}" alt="">
+                    lolo
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+</section>
+
+{% endblock main %}

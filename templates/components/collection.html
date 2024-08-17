@@ -1,0 +1,69 @@
+{% load static %}
+
+<section class='nft_section'>
+    <div class="container">
+
+        <nav class="navigation">
+            <ul>
+                <a  href='{% url "market" %}'>NFTs <span>{{caunt}}</span></a>
+                <a class='activ' href='' >Collections <span>{{Collections}}</span></a>
+            </ul>
+        </nav>
+    </div>
+</section>
+
+<section class="nft_cart">
+    <div class="container">
+{% comment %} user/{{nft.created_by.user.pk}} url cillection {% endcomment %}
+        {% for nft in nfts %}
+            <a href='#' class="blok">
+                <div class="top">
+                    <img src="{{nft.photo.url}}" alt="">
+                </div>
+                <div class="bottom">
+                    <div class="nft">
+                        <h5 class="name">{{nft.name}}</h5>
+                        {% comment %} <div class="user">
+                            <img src="{{nft.created_by.photo.url}}" alt="">
+                            {{nft.created_by.user.username}}
+                        </div> {% endcomment %}
+                    </div>
+                    
+                    {% comment %} <div class="seal">
+                        <span>Price</span>
+                        <p>{{nft.prise}} ETH</p>
+                    </div> {% endcomment %}
+                </div>
+            </a>
+        {% endfor %}
+
+
+        {% if nfts.has_other_pages %}
+            <div class="pagination">
+                {% if nfts.has_previous %}
+                    <a href="?page=1" class="left">
+                        <img src="{% static "img/left.svg" %}" alt="">
+                    </a>
+                {% endif %}
+                <div class="num">
+
+                    {% for num in nfts.paginator.page_range %}
+                        {% if nfts.number == num %}
+                            <a class="current-page">{{ num }}</a>
+                        {% elif num > nfts.number|add:'-5' and num < nfts.number|add:'5' %}
+                            <a href="?page={{ num }}">{{ num }}</a>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+
+                {% if  nfts.has_next %}
+                    <a href="?page={{nfts.next_page_number}}" class="reght">
+                        <img src="{% static "img/reght.svg" %}" alt="">
+                    </a>
+                {% endif %}
+            </div>
+        {% endif %}
+
+        
+    </div>
+</section>
