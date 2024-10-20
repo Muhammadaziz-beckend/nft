@@ -35,6 +35,7 @@ def login_fun(req):
 
     return render(req, "workspace/login.html", context=context)
 
+
 @login_required(login_url='/workspace/login/')
 def logaut_user(req):
     logout(req)
